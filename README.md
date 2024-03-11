@@ -30,7 +30,9 @@ Ahora que usas TypeScript, necesitas separar entre código fuente y código comp
 
 Para que tu código fuente se compile a JavaScript, necesitas lanzar un comando. Te hemos dejado un script en el archivo `package.json` que se llama `build` y que por ahora está vacío. Tienes que configurarlo para que compile tu código fuente. Busca qué comando necesitas para compilar TypeScript y añádelo al script `build`.
 
-Ahora, cada vez que quieras ejecutar tu programa, previamente tendrás que lanzar el comando de compilación, porque si no tus cambios en el código fuente no se verán reflejados en el código compilado. Para lanzar el comando de compilación desde la terminal, escribe:
+**IMPORTANTE**: Ahora, cada vez que quieras ejecutar tu programa, previamente tendrás que lanzar el comando de compilación, porque si no tus cambios en el código fuente no se verán reflejados en el código compilado.
+
+Para lanzar el comando de compilación desde la terminal, escribe:
 
 ```bash
 npm run build
