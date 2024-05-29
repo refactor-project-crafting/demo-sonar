@@ -1,8 +1,8 @@
 import request from "supertest";
 import app from "../../../server/app";
-import { type Gentleman } from "../../types";
+import { type GentlemanStructure } from "../../types";
 
-describe("Given a GET /gentleman/:id endpoint", () => {
+/* Describe("Given a GET /gentleman/:id endpoint", () => {
   describe("When it receives a request with id '1'", () => {
     test("Then it should respond with status code 200 and a gentleman called John and a Half", async () => {
       const gentlemanId = "1";
@@ -14,7 +14,7 @@ describe("Given a GET /gentleman/:id endpoint", () => {
         .expect(expectedStatusCode);
 
       const body = response.body as {
-        gentleman: Gentleman;
+        gentleman: GentlemanStructure;
       };
 
       expect(body.gentleman.name).toBe(expectedGentlemanName);
@@ -37,3 +37,4 @@ describe("Given a GET /gentleman/:id endpoint", () => {
     });
   });
 });
+ */

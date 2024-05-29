@@ -1,9 +1,10 @@
-import { type GentlemanData, type Gentleman } from "../../types";
+import { type GentlemanData, type GentlemanStructure } from "../../types";
 
 interface GentlemenRepository {
-  getAll: () => Promise<Gentleman[]>;
-  getById: (gentlemanId: string) => Promise<Gentleman>;
-  create: (gentlemanData: GentlemanData) => Promise<Gentleman>;
+  getAll: () => Promise<GentlemanStructure[]>;
+  getById: (gentlemanId: string) => Promise<GentlemanStructure>;
+  create: (gentlemanData: GentlemanData) => Promise<GentlemanStructure>;
+  delete: (gentlemanId: string) => Promise<GentlemanStructure>;
 }
 
 export default GentlemenRepository;

@@ -24,7 +24,15 @@ class GentlemenController {
 
       res.status(200).json({ gentleman });
     } catch (error) {
-      const serverError = new ServerError((error as Error).message, 404);
+      const errorMessage = (error as Error).message;
+      const serverErrorMessage =
+        errorMessage === "Gentleman not found"
+          ? "Gentleman not found"
+          : (error as Error).message;
+      const statusCode =
+        serverErrorMessage === "Gentleman not found" ? 404 : 400;
+
+      const serverError = new ServerError(serverErrorMessage, statusCode);
 
       next(serverError);
     }
@@ -41,9 +49,37 @@ class GentlemenController {
   ) => {
     const gentlemanData = req.body;
 
-    const newGentleman = await this.gentlemenRepository.create(gentlemanData);
+    try {
+      const newGentleman = await this.gentlemenRepository.create(gentlemanData);
 
-    res.status(201).json({ newGentleman });
+      res.status(201).json({ newGentleman });
+    } catch (error) {
+      const statusCode =
+        (error as Error).message === "Invalid gentleman format" ? 400 : 409;
+      const serverError = new ServerError((error as Error).message, statusCode);
+
+      next(serverError);
+    }
+  };
+
+  deleteGentleman = async (
+    req: Request<{ gentlemanId: string }>,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { gentlemanId } = req.params;
+
+    try {
+      const deletedGentleman = await this.gentlemenRepository.delete(
+        gentlemanId
+      );
+
+      res.status(200).json({ deletedGentleman });
+    } catch (error) {
+      const serverError = new ServerError((error as Error).message, 404);
+
+      next(serverError);
+    }
   };
 }
 
